@@ -4,17 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EnumerableExtensions;
-namespace GenericCompiler.CompilerStages.TextSide
+namespace GenericCompiler.LexicalAnalysis
 {
     public static class NumberParser
     {
-
         /// <summary>
         /// Converts a collection of splitted words onto a collection ITokenSubstring of bool where numbers are single items
         /// with the token value = true
         /// </summary>
         /// <param name="Words"></param>
         /// <returns></returns>
+        
+        [Obsolete ("Use a LexerParser and the NumberLexerUnit instead")]
         public static IEnumerable<ITokenSubstring<bool>> ParseNumbers(IEnumerable<ISubstring> Words)
         {
             Func<string, bool> IsInteger = (x) => x.All((c) => char.IsDigit(c));

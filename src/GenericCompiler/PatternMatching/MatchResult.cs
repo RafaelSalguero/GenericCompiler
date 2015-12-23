@@ -66,10 +66,10 @@ namespace GenericCompiler.PatternMatching
     /// <summary>
     /// A dictionary of key-token of a resulting pattern match.
     /// An instance of a match result with empty values represent a succeed match
-    /// Null represents a failed match
+    /// An empty collection of matches represent a failed match
     /// </summary>
-    /// <typeparam name="TKey"></typeparam>
-    /// <typeparam name="TToken"></typeparam>
+    /// <typeparam name="TKey">A key of the matched value dictionary</typeparam>
+    /// <typeparam name="TToken">The type of matched values</typeparam>
     [DebuggerDisplay("{ToString()}")]
     public class MatchResult<TKey, TValue>
     {

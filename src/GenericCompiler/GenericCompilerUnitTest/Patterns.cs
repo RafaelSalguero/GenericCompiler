@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GenericCompiler.AbstractTree;
 using GenericCompiler.PatternMatching.Patterns;
-using GenericCompiler.TextSide;
+using GenericCompiler.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GenericCompiler;
 namespace GenericCompilerUnitTest

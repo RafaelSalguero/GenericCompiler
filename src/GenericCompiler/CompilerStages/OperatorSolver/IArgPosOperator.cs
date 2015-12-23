@@ -11,7 +11,7 @@ namespace GenericCompiler.CompilerStages.OperatorSolver
         OperatorArgumentPosition ArgumentPosition { get; }
     }
 
- 
+
     /// <summary>
     /// An operator with precedence
     /// </summary>
@@ -20,19 +20,30 @@ namespace GenericCompiler.CompilerStages.OperatorSolver
         int Precedence { get; }
     }
 
+    public interface IIsOperator
+    {
+        bool IsOperator { get; }
+    }
+
+    public interface IOperator<TOperator>
+    {
+        TOperator Operator { get; }
+    }
     /// <summary>
     /// Identify a token as a parenthesis
     /// </summary>
-    public interface IParenthesis
+    public interface IIsParenthesis
     {
-        bool IsCloedParenthesis { get; }
+        bool IsClosedParenthesis { get; }
         bool IsOpenParenthesis { get; }
     }
     /// <summary>
     /// Identify a token as a comma
     /// </summary>
-    public interface IComma
+    public interface IIsComma
     {
         bool IsComma { get; }
     }
+
+
 }

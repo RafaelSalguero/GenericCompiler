@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GenericCompiler.AbstractTree;
 using GenericCompiler.PatternMatching.Patterns.Composed;
 using GenericCompiler.PatternMatching.Patterns.Primitives;
 using EnumerableExtensions;

@@ -1,13 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2013 for Windows Desktop
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericCompiler", "GenericCompiler.csproj", "{4B154DF4-1A67-4406-956B-5F4893B4D93B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TonicLogic", "..\TonicLogic\TonicLogic.csproj", "{F8CFE0CF-4155-49F4-A17B-77EF0AB8EED3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericCompilerTextSide", "..\CompilerTextSide\GenericCompilerTextSide.csproj", "{D30A59FE-D270-4CBF-B76F-A2B9FF57A09A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericCompilerUnitTest", "GenericCompilerUnitTest\GenericCompilerUnitTest.csproj", "{5F1FC6BF-CDD0-490C-AF5C-5DB8086CD3AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnumerableExtensions", "..\..\EnumerableExtensions\EnumerableExtensions.csproj", "{77505DC5-4FA9-450D-8CCA-9FA1FF7CA74D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericCompilerUnitTest", "..\GenericCompilerUnitTest\GenericCompilerUnitTest.csproj", "{20D8E18E-6C59-4619-83D1-5C8358BEAB7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubstringLexerTest", "..\SubstringLexerTest\SubstringLexerTest.csproj", "{0885DDAC-F1AC-4CB8-9014-92DE680A2CA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +23,22 @@ Global
 		{4B154DF4-1A67-4406-956B-5F4893B4D93B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B154DF4-1A67-4406-956B-5F4893B4D93B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B154DF4-1A67-4406-956B-5F4893B4D93B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F8CFE0CF-4155-49F4-A17B-77EF0AB8EED3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F8CFE0CF-4155-49F4-A17B-77EF0AB8EED3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F8CFE0CF-4155-49F4-A17B-77EF0AB8EED3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F8CFE0CF-4155-49F4-A17B-77EF0AB8EED3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5F1FC6BF-CDD0-490C-AF5C-5DB8086CD3AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5F1FC6BF-CDD0-490C-AF5C-5DB8086CD3AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5F1FC6BF-CDD0-490C-AF5C-5DB8086CD3AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5F1FC6BF-CDD0-490C-AF5C-5DB8086CD3AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D30A59FE-D270-4CBF-B76F-A2B9FF57A09A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D30A59FE-D270-4CBF-B76F-A2B9FF57A09A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D30A59FE-D270-4CBF-B76F-A2B9FF57A09A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D30A59FE-D270-4CBF-B76F-A2B9FF57A09A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77505DC5-4FA9-450D-8CCA-9FA1FF7CA74D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77505DC5-4FA9-450D-8CCA-9FA1FF7CA74D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77505DC5-4FA9-450D-8CCA-9FA1FF7CA74D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77505DC5-4FA9-450D-8CCA-9FA1FF7CA74D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20D8E18E-6C59-4619-83D1-5C8358BEAB7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20D8E18E-6C59-4619-83D1-5C8358BEAB7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20D8E18E-6C59-4619-83D1-5C8358BEAB7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20D8E18E-6C59-4619-83D1-5C8358BEAB7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0885DDAC-F1AC-4CB8-9014-92DE680A2CA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0885DDAC-F1AC-4CB8-9014-92DE680A2CA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0885DDAC-F1AC-4CB8-9014-92DE680A2CA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0885DDAC-F1AC-4CB8-9014-92DE680A2CA1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GenericCompiler.AbstractTree;
 
 namespace GenericCompiler.PatternMatching.Patterns.Primitives
 {
@@ -18,6 +17,7 @@ namespace GenericCompiler.PatternMatching.Patterns.Primitives
     {
         public IEnumerable<MatchResult<TKey, ITree<TValue>>> Match(ITree<TValue> Token)
         {
+            //Always return a single empty match result, wich is a pass
             yield return new MatchResult<TKey, ITree<TValue>>();
         }
 

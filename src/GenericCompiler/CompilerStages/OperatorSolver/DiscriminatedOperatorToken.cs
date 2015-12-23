@@ -7,12 +7,16 @@ using System.Threading.Tasks;
 
 namespace GenericCompiler.CompilerStages.OperatorSolver
 {
+
+
     /// <summary>
     /// Result from an operator solver 
     /// </summary>
     /// <typeparam name="TToken"></typeparam>
     [DebuggerDisplay("{ToString()}")]
-    public class DiscriminatedOperatorToken<TToken, TOperator>
+    public class DiscriminatedOperatorToken<TToken, TOperator> : IIsOperator, IOperator<TOperator>, IToken<TToken>, IIsParenthesis, IIsComma, ISubstring
+        where TOperator : IIsParenthesis, IIsComma
+        where TToken : ISubstring
     {
         public DiscriminatedOperatorToken(TToken Token, bool IsOperator, TOperator Operator)
         {
@@ -21,7 +25,7 @@ namespace GenericCompiler.CompilerStages.OperatorSolver
             this.Operator = Operator;
         }
 
-        public TToken Token;
+        public TToken Token { get; private set; }
 
         /// <summary>
         /// Returns true if this is a solved operator
@@ -37,6 +41,42 @@ namespace GenericCompiler.CompilerStages.OperatorSolver
                 return Token.ToString() + "[" + Operator.ToString() + "]";
             else
                 return Token.ToString();
+        }
+
+
+        public bool IsClosedParenthesis
+        {
+            get { return IsOperator && Operator.IsClosedParenthesis; }
+        }
+
+        public bool IsOpenParenthesis
+        {
+            get { return IsOperator && Operator.IsOpenParenthesis; }
+        }
+
+        public bool IsComma
+        {
+            get { return IsOperator && Operator.IsComma; }
+        }
+
+        string ISubstring.CompleteString
+        {
+            get { return Token.CompleteString; }
+        }
+
+        int ISubstring.CharIndex
+        {
+            get { return Token.CharIndex; }
+        }
+
+        int ISubstring.CharLen
+        {
+            get { return Token.CharLen; }
+        }
+
+        bool IEquatable<ISubstring>.Equals(ISubstring other)
+        {
+            return Token.Equals(other);
         }
     }
 }

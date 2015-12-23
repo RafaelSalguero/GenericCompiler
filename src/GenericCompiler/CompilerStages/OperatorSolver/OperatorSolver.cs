@@ -9,9 +9,14 @@ namespace GenericCompiler.CompilerStages.OperatorSolver
     public static class OperatorSolver
     {
         private static DiscriminatedOperatorToken<TToken, TOperator> CreateDOT<TToken, TOperator>(TToken Token, TOperator Operator)
+            where TOperator : IIsComma, IIsParenthesis
+            where TToken : ISubstring 
         { return new DiscriminatedOperatorToken<TToken, TOperator>(Token, true, Operator); }
 
         private static DiscriminatedOperatorToken<TToken, TOperator> CreateDOT<TToken, TOperator>(TToken Token)
+             where TOperator : IIsComma, IIsParenthesis
+            where TToken : ISubstring 
+
         { return new DiscriminatedOperatorToken<TToken, TOperator>(Token, false, default(TOperator)); }
 
 
@@ -82,14 +87,17 @@ namespace GenericCompiler.CompilerStages.OperatorSolver
             PostfixOrBinary
         }
 
-        public static IEnumerable<DiscriminatedOperatorToken<TToken, TOperator>> Solve2<TToken, TOperator>(
+        public static IEnumerable<DiscriminatedOperatorToken<TToken, TOperator>> Solve2<TToken, TOperator, TOperatorKey>(
             TToken[] Tokens,
+            Func<TToken, TOperatorKey> TokenOperatorSelector,
             IEnumerable<TOperator> Operators
             )
-            where TOperator : IArgPosOperator, IParenthesis, IComma, IOriginalToken<TToken>
+            where TOperator : IArgPosOperator, IIsParenthesis, IIsComma, IOriginalToken<TOperatorKey>
+            where TToken : ISubstring 
+
         {
             //Initialize the operator dictionary:
-            var OperatorDic = new Dictionary<TToken, List<TOperator>>();
+            var OperatorDic = new Dictionary<TOperatorKey, List<TOperator>>();
             foreach (var Op in Operators)
             {
                 var key = Op.OriginalToken;
@@ -114,14 +122,14 @@ namespace GenericCompiler.CompilerStages.OperatorSolver
             for (int i = 0; i < Tokens.Length; i++)
             {
                 List<TOperator> Match;
-                if (OperatorDic.TryGetValue(Tokens[i], out Match))
+                if (OperatorDic.TryGetValue(TokenOperatorSelector(Tokens[i]), out Match))
                 {
                     MatchArray[i] = Match;
                     if (Match.Count == 1)
                     {
                         if (Match[0].IsOpenParenthesis)
                             Solving[i] = OperatorSolver.Solving.OpenParenthesis;
-                        else if (Match[0].IsCloedParenthesis)
+                        else if (Match[0].IsClosedParenthesis)
                             Solving[i] = OperatorSolver.Solving.ClosedParenthesis;
                         else if (Match[0].IsComma)
                             Solving[i] = OperatorSolver.Solving.Comma;
@@ -180,6 +188,6 @@ namespace GenericCompiler.CompilerStages.OperatorSolver
             }
         }
 
-   
+
     }
 }

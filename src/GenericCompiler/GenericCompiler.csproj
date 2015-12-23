@@ -39,18 +39,49 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractTree\ITreeItem.cs" />
-    <Compile Include="CompilerStages\Groping\TokenGrouping.cs" />
+    <Compile Include="BackusNaur\Backus\BackusExpression.cs" />
+    <Compile Include="BackusNaur\Backus\Cases.cs" />
+    <Compile Include="BackusNaur\Backus\End.cs" />
+    <Compile Include="BackusNaur\Backus\Optional.cs" />
+    <Compile Include="BackusNaur\Backus\Reference.cs" />
+    <Compile Include="BackusNaur\Backus\Split.cs" />
+    <Compile Include="BackusNaur\Backus\Repeated.cs" />
+    <Compile Include="BackusNaur\Backus\Sequence.cs" />
+    <Compile Include="BackusNaur\Backus\Terminal.cs" />
+    <Compile Include="BackusNaur\ParserResult\SingleResult.cs" />
+    <Compile Include="BackusNaur\ParserResult\PExpression.cs" />
+    <Compile Include="BackusNaur\ParserResult\CollectionResult.cs" />
+    <Compile Include="BackusNaur\ParserResult\TerminalResult.cs" />
+    <Compile Include="BackusNaur\ParserResult\WordResult.cs" />
+    <Compile Include="BackusNaur\RecursiveDescentParser.cs" />
+    <Compile Include="BackusNaur\StateDequeue.cs" />
     <Compile Include="CompilerStages\OperatorSolver\IArgPosOperator.cs" />
-    <Compile Include="CompilerStages\TextSide\NumberParser.cs" />
+    <Compile Include="CompilerStages\OperatorSolver\CallSolver.cs" />
+    <Compile Include="CompilerStages\OperatorSolver\Operator.cs" />
+    <Compile Include="LexicalAnalysis\CommonTokens.cs" />
+    <Compile Include="LexicalAnalysis\ILexerAnalysisInput.cs" />
+    <Compile Include="LexicalAnalysis\LanguageDictionary.cs" />
+    <Compile Include="LexicalAnalysis\LexerDictionary.cs" />
+    <Compile Include="LexicalAnalysis\LexerUnits\IITokenizedParser.cs" />
+    <Compile Include="LexicalAnalysis\LexerToken.cs" />
+    <Compile Include="LexicalAnalysis\LexerUnits\LexerWordLenght.cs" />
+    <Compile Include="LexicalAnalysis\LexerUnits\Parsers\BeginEndLexerUnit.cs" />
+    <Compile Include="LexicalAnalysis\Lexer.cs" />
+    <Compile Include="LexicalAnalysis\LexerUnits\Parsers\LineJumpLexerUnit.cs" />
+    <Compile Include="LexicalAnalysis\LexerUnits\Parsers\NumberLexerUnit.cs" />
+    <Compile Include="LexicalAnalysis\LexerUnits\Parsers\WhiteSpaceLexerUnit.cs" />
+    <Compile Include="LexicalAnalysis\LexerUnits\Parsers\StringLexerUnit.cs" />
+    <Compile Include="TokenDebugNames.cs" />
+    <Compile Include="LexicalAnalysis\NumberParser.cs" />
     <Compile Include="ICompiler.cs" />
     <Compile Include="CompilerStages\OperatorSolver\DiscriminatedOperatorToken.cs" />
     <Compile Include="CompilerStages\OperatorSolver\OperatorArgumentPosition.cs" />
     <Compile Include="CompilerStages\OperatorSolver\OperatorSolver.cs" />
-    <Compile Include="ISubstring.cs" />
-    <Compile Include="LexicalParser\CommentParser.cs" />
-    <Compile Include="ParserException.cs" />
-    <Compile Include="ParserPosition.cs" />
+    <Compile Include="LexicalAnalysis\LexerUnits\Parsers\INoLookupLexerUnit.cs" />
+    <Compile Include="LexicalAnalysis\LexerUnits\Parsers\WordLexerUnit.cs" />
+    <Compile Include="LexicalAnalysis\LexerUnits\SubstringLexerSeparator.cs" />
+    <Compile Include="PrecedenceParser\RPN.cs" />
+    <Compile Include="PrecedenceParser\StackToken.cs" />
     <Compile Include="PatternMatching\Patterns\Composed\AllPattern.cs" />
     <Compile Include="PatternMatching\Patterns\Composed\OptionalPattern.cs" />
     <Compile Include="PatternMatching\Patterns\Composed\SelectPattern.cs" />
@@ -66,16 +97,27 @@
     <Compile Include="PatternMatching\Permutations\IntString.cs" />
     <Compile Include="PatternMatching\Permutations\PermutationGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CompilerStages\TextSide\WordSplitter.cs" />
-    <Compile Include="LexicalParser\LexicalParser.cs" />
+    <Compile Include="LexicalAnalysis\WordSplitter.cs" />
+    <Compile Include="SyntaxTree\Expressions\CallExpression.cs" />
+    <Compile Include="SyntaxTree\Expressions\Expression.cs" />
+    <Compile Include="SyntaxTree\Expressions\GroupExpression.cs" />
+    <Compile Include="SyntaxTree\Expressions\LiteralExpression.cs" />
+    <Compile Include="SyntaxTree\Expressions\NameExpression.cs" />
+    <Compile Include="SyntaxTree\Expressions\PrimitiveExpression.cs" />
+    <Compile Include="SyntaxTree\Statements\AssignStatement.cs" />
+    <Compile Include="SyntaxTree\Statements\BlockStatement.cs" />
+    <Compile Include="SyntaxTree\Statements\Statement.cs" />
+    <Compile Include="SyntaxTree\Statements\ReturnStatement.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="CompilerStages\ExpressionParser\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="F:\Users\Rafael Salguero\Documents\Visual Studio 2013\Projects\Rafa\DCodeGen\EnumerableExtensions\EnumerableExtensions.csproj">
+    <ProjectReference Include="..\..\EnumerableExtensions\EnumerableExtensions.csproj">
       <Project>{77505dc5-4fa9-450d-8cca-9fa1ff7ca74d}</Project>
       <Name>EnumerableExtensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CompilerTextSide\GenericCompilerTextSide.csproj">
+      <Project>{d30a59fe-d270-4cbf-b76f-a2b9ff57a09a}</Project>
+      <Name>GenericCompilerTextSide</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

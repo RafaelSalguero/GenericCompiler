@@ -56,6 +56,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CompilerTextSide\GenericCompilerTextSide.csproj">
+      <Project>{d30a59fe-d270-4cbf-b76f-a2b9ff57a09a}</Project>
+      <Name>GenericCompilerTextSide</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GenericCompiler.csproj">
       <Project>{4b154df4-1a67-4406-956b-5f4893b4d93b}</Project>
       <Name>GenericCompiler</Name>

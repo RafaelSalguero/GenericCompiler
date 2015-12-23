@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GenericCompiler.AbstractTree;
 using GenericCompiler.PatternMatching.Patterns.Primitives;
 
 namespace GenericCompiler.PatternMatching.Patterns
@@ -37,7 +36,10 @@ namespace GenericCompiler.PatternMatching.Patterns
             if (Predicate(Token))
                 return Pattern.Match(Token);
             else
+            {
+
                 return new MatchResult<TKey, ITree<TLeaf>>[0];
+            }
         }
 
         public override string ToString()

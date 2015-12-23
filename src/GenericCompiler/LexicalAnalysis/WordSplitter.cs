@@ -5,13 +5,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GenericCompiler.TextSide
+namespace GenericCompiler.LexicalAnalysis
 {
     public static class WordSplitter
     {
+        public static IEnumerable<ISubstring> SplitWords(this string Text, IEnumerable<string> SeparatorsInclude, IEnumerable<string> SeparatorsExclude)
+        {
+            var Separators = SeparatorsInclude.Concat(SeparatorsExclude);
+            return SplitWords(Text.AsSubstring(), Separators).Where((x) => !SeparatorsExclude.Contains(x.ToString()));
+        }
         public static IEnumerable<ISubstring> SplitWords(this string Text, IEnumerable<string> Separators)
         {
             return SplitWords(Text.AsSubstring(), Separators);
+        }
+
+        public static IEnumerable<ISubstring> SplitWords(this ISubstring Text, IEnumerable<string> SeparatorsInclude, IEnumerable<string> SeparatorsExclude)
+        {
+            var Separators = SeparatorsInclude.Concat(SeparatorsExclude);
+            return SplitWords(Text, Separators).Where((x) => !SeparatorsExclude.Contains(x.ToString()));
         }
         public static IEnumerable<ISubstring> SplitWords(this ISubstring Text, IEnumerable<string> Separators)
         {

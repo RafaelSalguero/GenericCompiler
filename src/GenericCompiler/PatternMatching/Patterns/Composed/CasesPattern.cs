@@ -24,7 +24,7 @@ namespace GenericCompiler.PatternMatching.Patterns
         /// </summary>
         public readonly IEnumerable<IPattern<TKey, TValue>> Cases;
 
-        public IEnumerable<MatchResult<TKey, AbstractTree.ITree<TValue>>> Match(AbstractTree.ITree<TValue> Subject)
+        public IEnumerable<MatchResult<TKey, ITree<TValue>>> Match(ITree<TValue> Subject)
         {
             foreach (var C in Cases)
             {

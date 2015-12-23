@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GenericCompiler.AbstractTree;
 using GenericCompiler.PatternMatching.Permutations;
 using EnumerableExtensions;
 namespace GenericCompiler.PatternMatching.Patterns
@@ -96,7 +95,7 @@ namespace GenericCompiler.PatternMatching.Patterns
                         List<MatchResult<TKey, ITree<TLeaf>>> DigitValue = new List<MatchResult<TKey, ITree<TLeaf>>>();
                         if (TrySingleSequences)
                         {
-                            var sliceToken = new DummyTree<TLeaf>(Header, sliceItems);
+                            var sliceToken = TreeExtensions.CreateTree(Header, sliceItems);
                             DigitValue.AddRange(Sequence[i].Match(sliceToken));
                         }
                         if (TryOneIdentity)
@@ -110,7 +109,7 @@ namespace GenericCompiler.PatternMatching.Patterns
                         List<MatchResult<TKey, ITree<TLeaf>>> DigitValue = new List<MatchResult<TKey, ITree<TLeaf>>>();
                         if (TryEmptySequences)
                         {
-                            var sliceToken = new DummyTree<TLeaf>(Header, sliceItems);
+                            var sliceToken = TreeExtensions.CreateTree(Header, sliceItems);
                             DigitValue.AddRange(Sequence[i].Match(sliceToken));
                         }
                         if (TryZeroDefault)
@@ -121,7 +120,7 @@ namespace GenericCompiler.PatternMatching.Patterns
                     }
                     else
                     {
-                        var sliceToken = new DummyTree<TLeaf>(Header, sliceItems);
+                        var sliceToken = TreeExtensions.CreateTree(Header, sliceItems);
                         Digits[i] = Sequence[i].Match(sliceToken);
                     }
 

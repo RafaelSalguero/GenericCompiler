@@ -24,7 +24,7 @@ namespace GenericCompiler.PatternMatching.Patterns
 
         public TKey Name;
         public IPattern<TKey, TValue> Pattern;
-        public IEnumerable<MatchResult<TKey, AbstractTree.ITree<TValue>>> Match(AbstractTree.ITree<TValue> Token)
+        public IEnumerable<MatchResult<TKey, ITree<TValue>>> Match(ITree<TValue> Token)
         {
             var NameMatch = MatchResultFactory.Create(Name, Token);
             foreach (var match in Pattern.Match(Token))
