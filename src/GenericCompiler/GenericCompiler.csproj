@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4B154DF4-1A67-4406-956B-5F4893B4D93B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GenericCompiler</RootNamespace>
+    <AssemblyName>GenericCompiler</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AbstractTree\ITreeItem.cs" />
+    <Compile Include="CompilerStages\Groping\TokenGrouping.cs" />
+    <Compile Include="CompilerStages\OperatorSolver\IArgPosOperator.cs" />
+    <Compile Include="CompilerStages\TextSide\NumberParser.cs" />
+    <Compile Include="ICompiler.cs" />
+    <Compile Include="CompilerStages\OperatorSolver\DiscriminatedOperatorToken.cs" />
+    <Compile Include="CompilerStages\OperatorSolver\OperatorArgumentPosition.cs" />
+    <Compile Include="CompilerStages\OperatorSolver\OperatorSolver.cs" />
+    <Compile Include="ISubstring.cs" />
+    <Compile Include="LexicalParser\CommentParser.cs" />
+    <Compile Include="ParserException.cs" />
+    <Compile Include="ParserPosition.cs" />
+    <Compile Include="PatternMatching\Patterns\Composed\AllPattern.cs" />
+    <Compile Include="PatternMatching\Patterns\Composed\OptionalPattern.cs" />
+    <Compile Include="PatternMatching\Patterns\Composed\SelectPattern.cs" />
+    <Compile Include="PatternMatching\Patterns\Primitives\AnyPattern.cs" />
+    <Compile Include="PatternMatching\Patterns\Composed\CasesPattern.cs" />
+    <Compile Include="PatternMatching\Patterns\IPattern.cs" />
+    <Compile Include="PatternMatching\MatchResult.cs" />
+    <Compile Include="PatternMatching\Patterns\Composed\NamedPattern.cs" />
+    <Compile Include="PatternMatching\Patterns\PatternFactory.cs" />
+    <Compile Include="PatternMatching\Patterns\Composed\TestPattern.cs" />
+    <Compile Include="PatternMatching\Patterns\Composed\SequencePattern.cs" />
+    <Compile Include="PatternMatching\Patterns\Primitives\EqualsPattern.cs" />
+    <Compile Include="PatternMatching\Permutations\IntString.cs" />
+    <Compile Include="PatternMatching\Permutations\PermutationGenerator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CompilerStages\TextSide\WordSplitter.cs" />
+    <Compile Include="LexicalParser\LexicalParser.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CompilerStages\ExpressionParser\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="F:\Users\Rafael Salguero\Documents\Visual Studio 2013\Projects\Rafa\DCodeGen\EnumerableExtensions\EnumerableExtensions.csproj">
+      <Project>{77505dc5-4fa9-450d-8cca-9fa1ff7ca74d}</Project>
+      <Name>EnumerableExtensions</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
